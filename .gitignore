@@ -1,0 +1,9 @@
+*.iml
+.idea/
+*.log
+*.swp
+target/
+.settings
+.project
+.classpath
+.checkstyle

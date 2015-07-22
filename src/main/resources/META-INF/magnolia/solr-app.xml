@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module SYSTEM "module.dtd" >
+<module>
+    <name>solr-app</name>
+    <displayName>${project.name}</displayName>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+
+    <components>
+        <id>app-solr-management</id>
+        <component>
+            <type>nl.info.magnolia.solr.app.SolrManagementSubApp</type>
+            <implementation>nl.info.magnolia.solr.app.SolrManagementSubApp</implementation>
+        </component>
+        <component>
+            <type>nl.info.magnolia.solr.app.SolrManagementAppView</type>
+            <implementation>nl.info.magnolia.solr.app.SolrManagementAppViewImpl</implementation>
+        </component>
+    </components>
+
+    <dependencies>
+        <dependency>
+            <name>content-indexer</name>
+            <version>2/*</version>
+        </dependency>
+        <dependency>
+            <name>solr-search-provider</name>
+            <version>2/*</version>
+        </dependency>
+    </dependencies>
+
+</module>

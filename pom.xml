@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.info.magnolia</groupId>
+    <artifactId>solr-app-magnolia-module</artifactId>
+    <name>Solr App Magnolia Module</name>
+    <description>Magnolia App to perform basic management tasks on the Magnolia Solr Content Indexer and Search Providers modules. Made by Info.nl.</description>
+    <packaging>jar</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>Info.nl</name>
+        <url>http://info.nl</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>edgar</id>
+            <name>Edgar Vonk</name>
+        </developer>
+    </developers>
+    <contributors>
+        <!-- add as needed -->
+    </contributors>
+    <licenses>
+        <license>
+            <name>GNU General Public License, version 3.0</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
+    <properties>
+        <javaVersion>1.8</javaVersion>
+        <magnoliaLicenseVersion>1.4.2</magnoliaLicenseVersion>
+        <magnoliaSolrVersion>2.2</magnoliaSolrVersion>
+        <magnoliaVersion>5.4</magnoliaVersion>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>info.magnolia</groupId>
+            <artifactId>magnolia-core</artifactId>
+            <version>${magnoliaVersion}</version>
+        </dependency>
+        <!-- required by the ContentIndexerModule class of the content-indexer module -->
+        <dependency>
+            <groupId>info.magnolia</groupId>
+            <artifactId>magnolia-license</artifactId>
+            <version>${magnoliaLicenseVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.magnolia.ui</groupId>
+            <artifactId>magnolia-ui-framework</artifactId>
+            <version>${magnoliaVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.magnolia.solr</groupId>
+            <artifactId>magnolia-solr-search-provider</artifactId>
+            <version>${magnoliaSolrVersion}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${javaVersion}</source>
+                    <target>${javaVersion}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+        </plugins>
+
+        <!-- default resources configuration to filter the module descriptor -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>META-INF/magnolia/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <scm>
+        <connection>scm:git:gitolite@git.info.nl:magnolia-solr-app</connection>
+        <developerConnection>scm:git:gitolite@git.info.nl:magnolia-solr-app</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+</project>
