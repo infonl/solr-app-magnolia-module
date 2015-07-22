@@ -111,8 +111,10 @@
     </build>
 
     <scm>
-        <connection>scm:git:gitolite@git.info.nl:magnolia-solr-app</connection>
-        <developerConnection>scm:git:gitolite@git.info.nl:magnolia-solr-app</developerConnection>
+        <url>https://github.com/infonl/solr-app-magnolia-module.git</url>
+        <connection>scm:git:https://github.com/infonl/solr-app-magnolia-module.git</connection>
+        <developerConnection>scm:git:https://github.com/infonl/solr-app-magnolia-module.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
 </project>
