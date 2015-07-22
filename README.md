@@ -37,7 +37,7 @@ Maven dependency
         <dependency>
             <groupId>nl.info.magnolia</groupId>                  
             <artifactId>solr-app-magnolia-module</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.0</version>
         </dependency>
 ```
 
