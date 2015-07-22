@@ -21,7 +21,7 @@ Though the source code is kept on Github, this module is part of the [Magnolia F
 Issue tracking
 --------------
 
-TODO: link to project on Forge once available 
+TODO: link to project on Magnolia Forge once available 
 
 Please report any bugs, improvements or feature requests at the [Magnolia JIRA project for this Magnolia Forge module](https://jira.magnolia-cms.com/browse/TODO).
 
@@ -36,7 +36,7 @@ Maven dependency
 ```xml
         <dependency>
             <groupId>nl.info.magnolia</groupId>                  
-            <artifactId>magnolia-solr-app</artifactId>
+            <artifactId>solr-app-magnolia-module</artifactId>
             <version>1.0.1</version>
         </dependency>
 ```
