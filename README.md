@@ -1,4 +1,4 @@
-Magnolia Solr App
+Solr App Magnolia Module
 =======================
 
 A [module](https://documentation.magnolia-cms.com/display/DOCS/Modules) containing an [app](https://documentation.magnolia-cms.com/display/DOCS/Apps) for [Magnolia CMS](http://www.magnolia-cms.com) 
@@ -7,9 +7,10 @@ that acts as an optional add-on to the Magnolia Solr Search Provider and Magnoli
 It offers functionality to inspect basic aspects of the Solr search server configured in the Solr Search Provider module and allows users to perform basic administration tasks 
 such as clearing the Solr index and starting any Solr crawlers that have been enabled in the Magnolia Content Indexer module.
 
+![Solr App Screenshot](https://raw.githubusercontent.com/infonl/solr-app-magnolia-module/master/img/solr-app-screenshot.png?raw=true)
+
 License
 -------
-
 Released under the GPLv3, see LICENSE.txt. 
 
 Feel free to use this app, but if you modify the source code please fork this project on Github.
@@ -20,7 +21,6 @@ Though the source code is kept on Github, this module is part of the [Magnolia F
 
 Issue tracking
 --------------
-
 TODO: link to project on Magnolia Forge once available 
 
 Please report any bugs, improvements or feature requests at the [Magnolia JIRA project for this Magnolia Forge module](https://jira.magnolia-cms.com/browse/TODO).
