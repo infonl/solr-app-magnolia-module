@@ -11,7 +11,7 @@ such as clearing the Solr index and starting any Solr crawlers that have been en
 
 License
 -------
-Released under the GPLv3, see LICENSE.txt. 
+Released under the MIT License, see LICENSE.txt. 
 
 Feel free to use this app, but if you modify the source code please fork this project on Github.
 
