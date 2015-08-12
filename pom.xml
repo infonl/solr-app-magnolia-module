@@ -7,7 +7,7 @@
     <name>Solr App Magnolia Module</name>
     <description>Magnolia App to perform basic management tasks on the Magnolia Solr Content Indexer and Search Providers modules. Made by Info.nl.</description>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <inceptionYear>2015</inceptionYear>
     <organization>
@@ -114,7 +114,7 @@
         <url>https://github.com/infonl/solr-app-magnolia-module.git</url>
         <connection>scm:git:https://github.com/infonl/solr-app-magnolia-module.git</connection>
         <developerConnection>scm:git:https://github.com/infonl/solr-app-magnolia-module.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>solr-app-magnolia-module-1.0.0</tag>
     </scm>
 
 </project>
