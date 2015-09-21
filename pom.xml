@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>nl.info.magnolia</groupId>
     <artifactId>solr-app-magnolia-module</artifactId>
     <name>Solr App Magnolia Module</name>
@@ -109,6 +108,21 @@
             </resource>
         </resources>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>magnolia.forge.releases</id>
+            <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>magnolia.forge.snapshots</id>
+            <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
+        </snapshotRepository>
+        <site>
+            <id>magnolia.forge.sites</id>
+            <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
+        </site>
+    </distributionManagement>
 
     <scm>
         <url>https://github.com/infonl/solr-app-magnolia-module.git</url>
