@@ -120,7 +120,7 @@
         </snapshotRepository>
         <site>
             <id>magnolia.forge.sites</id>
-            <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
+            <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${project.artifactId}/${project.version}</url>
         </site>
     </distributionManagement>
 
