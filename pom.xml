@@ -140,6 +140,29 @@
         </resources>
     </build>
 
+    <profiles>
+        <profile>
+            <!-- override default Magnolia release-perform-profile because -->
+            <!-- we use a newer version of Maven -->
+            <id>release-perform-profile</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3,)</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <scm>
         <url>https://github.com/infonl/solr-app-magnolia-module.git</url>
         <connection>scm:git:https://github.com/infonl/solr-app-magnolia-module.git</connection>
