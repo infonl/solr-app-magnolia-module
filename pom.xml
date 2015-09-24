@@ -33,6 +33,10 @@
             <url>http://www.opensource.org/licenses/mit-license.php</url>
         </license>
     </licenses>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://jira.magnolia-cms.com/projects/SOLRAPP</url>
+    </issueManagement>
 
     <properties>
         <!-- animal-sniffer Maven plugin does not support JDK 1.8 so disable it -->
