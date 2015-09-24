@@ -25,7 +25,7 @@ Please report any bugs, improvements or feature requests at the [Magnolia JIRA p
 
 Maven artifacts in Magnolia's Nexus
 ---------------------------------
-The code is built on [Magnolia's Jenkins](https://jenkins.magnolia-cms.com/view/Forge/job/forge_solr-app-magnolia-module/), and Maven artifacts are available through [Magnolia's Forge release repository](http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/) and [Forge release repository](https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/). 
+The code is built on [Magnolia's Jenkins](https://jenkins.magnolia-cms.com/view/Forge/job/forge_solr-app-magnolia-module/), and Maven artifacts are available through [Magnolia's Forge snapshot repository](https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots/) and [Magnolia's Forge release repository](https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/). 
 
 You can browse available artifacts through [Magnolia's Nexus](http://nexus.magnolia-cms.com/)
 
