@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>info.magnolia.maven.poms-forge</groupId>
+        <artifactId>magnolia-parent-pom-forge</artifactId>
+        <version>31</version>
+    </parent>
     <groupId>nl.info.magnolia</groupId>
     <artifactId>solr-app-magnolia-module</artifactId>
     <name>Solr App Magnolia Module</name>
@@ -30,6 +35,12 @@
     </licenses>
 
     <properties>
+        <!-- animal-sniffer Maven plugin does not support JDK 1.8 so disable it -->
+        <!-- see: https://github.com/mojohaus/animal-sniffer/issues/1 -->
+        <animal.sniffer.skip>true</animal.sniffer.skip>
+        <!-- disable checkstyle as our source code formatting is different from Magnolia's -->
+        <!-- we use smart tabs in our Java source files while Magnolia enforces spaces only -->
+        <checkstyle.skip>true</checkstyle.skip>
         <javaVersion>1.8</javaVersion>
         <magnoliaLicenseVersion>1.4.2</magnoliaLicenseVersion>
         <magnoliaSolrVersion>2.2</magnoliaSolrVersion>
@@ -89,16 +100,19 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
             </plugin>
+            <!-- workaround for lack of support for Java 8 in the Maven Clirr plugin -->
+            <!-- by using a newer version of BCEL which does support Java 8 -->
+            <!-- see: https://issues.apache.org/jira/browse/LANG-1025 -->
+            <!-- and: https://github.com/RichardWarburton/lambda-behave/issues/31#issuecomment-86052095 -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.4</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>clirr-maven-plugin</artifactId>
+                <version>2.6.1</version>
                 <dependencies>
                     <dependency>
-                        <!-- add support for dav since this is used by the Magnolia site deployment (see distributionManagement) -->
-                        <groupId>org.apache.maven.wagon</groupId>
-                        <artifactId>wagon-webdav-jackrabbit</artifactId>
-                        <version>2.7</version>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>bcel-findbugs</artifactId>
+                        <version>6.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -121,21 +135,6 @@
             </resource>
         </resources>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>magnolia.forge.releases</id>
-            <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>magnolia.forge.snapshots</id>
-            <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
-        </snapshotRepository>
-        <site>
-            <id>magnolia.forge.sites</id>
-            <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${project.artifactId}/${project.version}</url>
-        </site>
-    </distributionManagement>
 
     <scm>
         <url>https://github.com/infonl/solr-app-magnolia-module.git</url>
