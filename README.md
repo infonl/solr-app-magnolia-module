@@ -21,15 +21,13 @@ Though the source code is kept on Github, this module is part of the [Magnolia F
 
 Issue tracking
 --------------
-TODO: link to project on Magnolia Forge once available 
-
-Please report any bugs, improvements or feature requests at the [Magnolia JIRA project for this Magnolia Forge module](https://jira.magnolia-cms.com/browse/TODO).
+Please report any bugs, improvements or feature requests at the [Magnolia JIRA project for this Magnolia Forge module](https://jira.magnolia-cms.com/projects/SOLRAPP).
 
 Maven artifacts in Magnolia's Nexus
 ---------------------------------
-The code is built on [Magnolia's Jenkins](http://jenkins.magnolia-cms.com/job/TODO/), and Maven artifacts are available through [Magnolia's Forge release repository](http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/) and [Forge snapshot repository](http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots/). 
+The code is built on [Magnolia's Jenkins](https://jenkins.magnolia-cms.com/view/Forge/job/forge_solr-app-magnolia-module/), and Maven artifacts are available through [Magnolia's Forge release repository](http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/) and [Forge release repository](https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases/). 
 
-You can browse available artifacts through [Magnolia's Nexus](http://nexus.magnolia-cms.com/#nexus-search;TODO)
+You can browse available artifacts through [Magnolia's Nexus](http://nexus.magnolia-cms.com/)
 
 Maven dependency
 -----------------
@@ -37,7 +35,7 @@ Maven dependency
         <dependency>
             <groupId>nl.info.magnolia</groupId>                  
             <artifactId>solr-app-magnolia-module</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 ```
 
