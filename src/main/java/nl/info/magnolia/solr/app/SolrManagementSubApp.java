@@ -29,16 +29,19 @@ import com.vaadin.data.util.PropertysetItem;
 import info.magnolia.commands.CommandsManager;
 import info.magnolia.i18nsystem.SimpleTranslator;
 import info.magnolia.search.solrsearchprovider.MagnoliaSolrBridge;
+import info.magnolia.search.solrsearchprovider.config.SolrServerConfig;
 import info.magnolia.ui.api.app.SubAppContext;
 import info.magnolia.ui.api.location.Location;
 import info.magnolia.ui.framework.app.BaseSubApp;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,6 +63,7 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 	// object to transport prepared data to the view
 	protected Item viewData = new PropertysetItem();
 	private MagnoliaSolrBridge magnoliaSolrBridge;
+	private SolrServerConfig solrServerConfig;
 	private boolean solrServerUp;
 	private final SimpleTranslator i18n;
 	private SolrManagementAppView view;
@@ -67,10 +71,11 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 	@Inject
 	public SolrManagementSubApp(SubAppContext subAppContext, SolrManagementAppView view,
 	                            CommandsManager commandsManager, MagnoliaSolrBridge magnoliaSolrBridge,
-	                            SimpleTranslator i18n) {
+	                            SolrServerConfig solrServerConfig, SimpleTranslator i18n) {
 		super(subAppContext, view);
 		this.commandsManager = commandsManager;
 		this.magnoliaSolrBridge = magnoliaSolrBridge;
+		this.solrServerConfig = solrServerConfig;
 		this.i18n = i18n;
 		this.view = view;
 
@@ -81,12 +86,9 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 	protected void prepareView(SolrManagementAppView view) {
 		viewData.removeItemProperty(SOLR_SERVER_STATUS);
 		viewData.removeItemProperty(SOLR_SERVER_NUMBER_OF_DOCUMENTS);
-		String solrServerUrl = "";
-		if (magnoliaSolrBridge.getSolrServer() instanceof HttpSolrServer) {
-			solrServerUrl = " " + ((HttpSolrServer) magnoliaSolrBridge.getSolrServer()).getBaseURL();
-		}
+		String solrServerUrl = solrServerConfig.getBaseURL();
 		String solrServerStatus = i18n.translate("solr.app.serverInformation")
-				  + solrServerUrl + " " +
+				  + " " + solrServerUrl + " " +
 				  (solrServerUp ? i18n.translate("solr.app.serverInformation.running") :
 				  i18n.translate("solr.app.serverInformation.notRunning"));
 		viewData.addItemProperty(SOLR_SERVER_STATUS, new ObjectProperty<>(solrServerStatus));
@@ -151,8 +153,8 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 		try {
 			SolrQuery query = new SolrQuery("*:*");
 			query.setRows(0); // don't actually request any data
-			numberOfDocuments = magnoliaSolrBridge.getSolrServer().query(query).getResults().getNumFound();
-		} catch (SolrServerException e) {
+			numberOfDocuments = magnoliaSolrBridge.getSolrClient().query(query).getResults().getNumFound();
+		} catch (SolrServerException|IOException e) {
 			LOG.error("Failed to perform query on Solr server. Returning '0' documents as default.", e);
 		}
 		return numberOfDocuments;
@@ -162,8 +164,8 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 		boolean isSolrServerUp = false;
 		try {
 			isSolrServerUp = this.magnoliaSolrBridge.testServerConnection();
-		} catch (HttpSolrServer.RemoteSolrException e) {
-			LOG.error("Failed to connect to Solr server {}", this.magnoliaSolrBridge.getSolrServer(), e);
+		} catch (HttpSolrClient.RemoteSolrException e) {
+			LOG.error("Failed to connect to Solr server {}", this.magnoliaSolrBridge.getSolrClient(), e);
 		}
 		return isSolrServerUp;
 	}
