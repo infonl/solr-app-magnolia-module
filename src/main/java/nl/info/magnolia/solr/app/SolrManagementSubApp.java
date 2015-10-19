@@ -48,7 +48,7 @@ import java.util.Map;
 public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> implements SolrManagementAppView.Listener {
 	private static final Logger LOG = LoggerFactory.getLogger(SolrManagementSubApp.class);
 
-	public static final String SOLR_COMMAND_CATALOG_NAME = "solr";
+	public static final String SOLR_APP_COMMAND_CATALOG_NAME = "solr-app";
 	public static final String CLEAR_SOLR_COMMAND_NAME = "clearSolr";
 	public static final String CONTENT_INDEXER_COMMAND_CATALOG_NAME = "content-indexer";
 	public static final String RUN_SOLR_CRAWLER_COMMAND_NAME = "crawlerIndexer";
@@ -105,10 +105,10 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 	@Override
 	public void clearSolrIndex() {
 		try {
-			commandsManager.executeCommand(SOLR_COMMAND_CATALOG_NAME, CLEAR_SOLR_COMMAND_NAME, null);
+			commandsManager.executeCommand(SOLR_APP_COMMAND_CATALOG_NAME, CLEAR_SOLR_COMMAND_NAME, null);
 		} catch (Exception e) {
 			LOG.error("Failed to execute '{}' command in catalog '{}'", CLEAR_SOLR_COMMAND_NAME,
-					  SOLR_COMMAND_CATALOG_NAME, e);
+					  SOLR_APP_COMMAND_CATALOG_NAME, e);
 		} finally {
 			refreshView();
 		}
