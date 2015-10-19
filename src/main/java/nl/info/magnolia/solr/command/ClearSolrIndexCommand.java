@@ -3,6 +3,7 @@ package nl.info.magnolia.solr.command;
 import info.magnolia.commands.MgnlCommand;
 import info.magnolia.context.Context;
 import info.magnolia.search.solrsearchprovider.MagnoliaSolrBridge;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.UpdateResponse;
@@ -40,13 +41,13 @@ public class ClearSolrIndexCommand extends MgnlCommand {
 	 */
 	@Override
 	public boolean execute(Context context) throws SolrServerException, IOException {
-		SolrServer solrServer = this.magnoliaSolrBridge.getSolrServer();
+		SolrClient solrClient = this.magnoliaSolrBridge.getSolrClient();
 		LOG.info("Sending request to Solr server to remove all documents in the Solr index.");
-		UpdateResponse updateResponse = solrServer.deleteByQuery("*:*");
+		UpdateResponse updateResponse = solrClient.deleteByQuery("*:*");
 		LOG.info("Received response from Solr server: {}", updateResponse);
 
 		LOG.info("Sending commit request to Solr server to effectuate latest request.");
-		updateResponse = solrServer.commit();
+		updateResponse = solrClient.commit();
 		LOG.info("Received response from Solr server: {}", updateResponse);
 
 		return true;
