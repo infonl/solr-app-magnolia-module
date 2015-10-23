@@ -29,6 +29,7 @@ import com.vaadin.data.util.PropertysetItem;
 import info.magnolia.commands.CommandsManager;
 import info.magnolia.i18nsystem.SimpleTranslator;
 import info.magnolia.search.solrsearchprovider.MagnoliaSolrBridge;
+import info.magnolia.search.solrsearchprovider.MagnoliaSolrSearchProviderModule;
 import info.magnolia.search.solrsearchprovider.config.SolrServerConfig;
 import info.magnolia.ui.api.app.SubAppContext;
 import info.magnolia.ui.api.location.Location;
@@ -71,11 +72,11 @@ public class SolrManagementSubApp extends BaseSubApp<SolrManagementAppView> impl
 	@Inject
 	public SolrManagementSubApp(SubAppContext subAppContext, SolrManagementAppView view,
 	                            CommandsManager commandsManager, MagnoliaSolrBridge magnoliaSolrBridge,
-	                            SolrServerConfig solrServerConfig, SimpleTranslator i18n) {
+	                            MagnoliaSolrSearchProviderModule magnoliaSolrSearchProviderModule, SimpleTranslator i18n) {
 		super(subAppContext, view);
 		this.commandsManager = commandsManager;
 		this.magnoliaSolrBridge = magnoliaSolrBridge;
-		this.solrServerConfig = solrServerConfig;
+		this.solrServerConfig = magnoliaSolrSearchProviderModule.getSolrConfig();
 		this.i18n = i18n;
 		this.view = view;
 
