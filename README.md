@@ -41,8 +41,8 @@ Maven dependency
 
 Versions
 -----------------
-* Version 1.0.x is compatible with Magnolia 5.3.x and 5.4.x and [Magnolia Solr Modules](https://documentation.magnolia-cms.com/display/DOCS/Solr+module) version 2.x and 3.x (but not 5.x) and Solr 4.
 * Version 2.0.x is compatible with Magnolia 5.4.x and [Magnolia Solr Modules](https://documentation.magnolia-cms.com/display/DOCS/Solr+module) version 5.x and Solr 5.
+* Version 1.0.x is compatible with Magnolia 5.3.x and 5.4.x and [Magnolia Solr Modules](https://documentation.magnolia-cms.com/display/DOCS/Solr+module) version 2.x and 3.x (but not 5.x) and Solr 4 and is no longer under active development.
 
 Magnolia Module Configuration
 -----------------
